@@ -36,4 +36,9 @@ class Token(BaseModel):
     token_type: str
 
 
+class FileStatus(BaseModel):
+    id: int
+    description: str
+    is_active: bool
+
 

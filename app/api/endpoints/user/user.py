@@ -6,11 +6,17 @@ from sqlalchemy.orm import Session
 
 # import
 from app.core.dependencies import get_db, oauth2_scheme 
-from app.schemas.user import User, UserCreate, UserUpdate
+from app.schemas.user import User, UserCreate, UserUpdate, FileStatus
 from app.api.endpoints.user import functions  as user_service
 
 user_module = APIRouter()
 
+
+
+# get all status
+@user_module.get('/status/',  response_model=list[FileStatus] )
+async def read_all_status( db: Session = Depends(get_db)):
+    return user_service.read_all_status(db)
 
 # @user_module.get('/')
 # async def read_auth_page():

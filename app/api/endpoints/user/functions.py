@@ -16,6 +16,7 @@ from app.core.dependencies import get_db, oauth2_scheme
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+#==============================User function============================
 # get user by email 
 def get_user_by_email(db: Session, email: str):
     return db.query(UserModel.User).filter(UserModel.User.email == email).first()
@@ -105,3 +106,10 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)],
     except JWTError:
         raise credentials_exception
 
+#=======================Status function=============
+
+
+# get all status
+def read_all_status(db: Session):
+    print('hi')
+    return db.query(UserModel.FileStatus).all()
