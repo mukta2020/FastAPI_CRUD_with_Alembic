@@ -14,7 +14,7 @@ user_module = APIRouter()
 
 
 # get all status
-@user_module.get('/status/',  response_model=list[FileStatus] )
+@user_module.get('/',  response_model=list[FileStatus] )
 async def read_all_status( db: Session = Depends(get_db)):
     return user_service.read_all_status(db)
 

@@ -112,4 +112,7 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)],
 # get all status
 def read_all_status(db: Session):
     print('hi')
-    return db.query(UserModel.FileStatus).all()
+    stList = db.query(UserModel.FileStatus).all()
+    
+    #import pdb; pdb.set_trace()
+    return stList
